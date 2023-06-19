@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
         // Set player velocity
         float playerVelocity = playerMovement * playerSpeed;
-        playerRb.velocity = new Vector2(playerSpeed, 0);
+        playerRb.velocity = new Vector2(playerVelocity, 0);
     }
 
 }
