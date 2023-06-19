@@ -6,15 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     // Rigidbody of the player
     private Rigidbody2D playerRb;
-    private bool grounded = true;
+    private BoxCollider2D playerBoxCollider;
+
 
     [SerializeField]
     float playerSpeed, playerJump;
+
+    [SerializeField]
+    private LayerMask groundLayer;
 
     private void Awake()
     {
         // Set the playerRb with the Rigidbody Component
         playerRb = GetComponent<Rigidbody2D>();
+        playerBoxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -28,10 +33,9 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetAxis("Jump") > 0 && grounded)
+        if (Input.GetAxis("Jump") > 0 && isPlayerGrounded())
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, playerJump);
-            grounded = false;
         }
     }
 
@@ -56,12 +60,9 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private bool isPlayerGrounded()
     {
-        if (other.gameObject.tag == "Ground")
-        {
-            grounded = true;
-        }
+        RaycastHit2D raycastHit = Physics2D.BoxCast(playerBoxCollider.bounds.center, playerBoxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
 }
