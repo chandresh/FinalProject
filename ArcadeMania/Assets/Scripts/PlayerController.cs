@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
 
     [SerializeField]
-    float playerSpeed = 10;
+    float playerSpeed, playerJump;
 
     private void Awake()
     {
@@ -23,7 +23,12 @@ public class PlayerController : MonoBehaviour
 
         // Set player velocity
         float playerVelocity = playerMovement * playerSpeed;
-        playerRb.velocity = new Vector2(playerVelocity, 0);
+        playerRb.velocity = new Vector2(playerVelocity, playerRb.velocity.y);
+
+        if (Input.GetAxis("Jump") > 0)
+        {
+            playerRb.velocity = new Vector2(playerRb.velocity.x, playerJump);
+        }
     }
 
 }
