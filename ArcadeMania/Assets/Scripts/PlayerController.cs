@@ -20,15 +20,37 @@ public class PlayerController : MonoBehaviour
     {
         // Capture the player movement (1 or -1)
         float playerMovement = Input.GetAxis("Horizontal");
+        FlipPlayer(playerMovement);
+        MovePlayer(playerMovement);
+        JumpPlayer();
+    }
 
-        // Set player velocity
-        float playerVelocity = playerMovement * playerSpeed;
-        playerRb.velocity = new Vector2(playerVelocity, playerRb.velocity.y);
-
+    private void JumpPlayer()
+    {
         if (Input.GetAxis("Jump") > 0)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, playerJump);
         }
     }
 
+    private void MovePlayer(float playerMovement)
+    {
+        // Set player velocity
+        float playerVelocity = playerMovement * playerSpeed;
+        playerRb.velocity = new Vector2(playerVelocity, playerRb.velocity.y);
+    }
+
+    private void FlipPlayer(float playerMovement)
+    {
+
+        if (playerMovement > 0.01f)
+        {
+            transform.localScale = Vector3.one;
+        }
+
+        if (playerMovement < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
 }
