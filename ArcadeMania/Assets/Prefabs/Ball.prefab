@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a7441a6f7bd464eb8f59c4c653326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 450
+  ballSpeed: 350
   playerShieldHeight: -4
 --- !u!50 &-308173915831587841
 Rigidbody2D:
