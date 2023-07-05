@@ -6,9 +6,8 @@ public class Destroyer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("IceCubes"))
-        {
-            Destroy(other.gameObject);
-        }
+        Debug.Log("Destroying " + other.gameObject);
+        // Destroy the other prefab instance
+        Destroy(other.gameObject);
     }
 }
