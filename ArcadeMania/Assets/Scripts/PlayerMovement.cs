@@ -23,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
     // Physics code goes in FixedUpdate
     private void FixedUpdate()
     {
+        MovePlayer();
+        SetPlayerDirection();
+    }
+
+    private void MovePlayer()
+    {
+        // Y is zero as we don't have jump functionality for player in this stage
         rb.velocity = new Vector2(getInput.directionX * speed, 0);
     }
 
@@ -32,6 +39,18 @@ public class PlayerMovement : MonoBehaviour
         {
             // speed = 0;
             // rb.position = new Vector2(rb.position.x, -4f);
+        }
+    }
+
+    private void SetPlayerDirection()
+    {
+        if (getInput.directionX > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (getInput.directionX < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 }
