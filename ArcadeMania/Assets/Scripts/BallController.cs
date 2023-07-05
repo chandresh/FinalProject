@@ -7,6 +7,8 @@ public class BallController : MonoBehaviour
 
     private Rigidbody2D ballRb;
     [SerializeField] private float ballSpeed = 500f;
+    [SerializeField] private float playerShieldHeight = 2.0f;
+
 
     private void Awake()
     {
@@ -16,6 +18,18 @@ public class BallController : MonoBehaviour
     void Start()
     {
         Invoke("SetBallRandomDirection", 1f);
+    }
+
+    private void Update()
+    {
+
+        // If the ball is below 2.23 on the y axis then increase gravity to 1
+        if (transform.localPosition.y < playerShieldHeight)
+        {
+            Debug.Log("Ball position: " + transform.position.y);
+            // Debug.Log("Gravity increased");
+            // ballRb.gravityScale = 1f;
+        }
     }
 
 
