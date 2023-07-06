@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 244194740}
   m_Layer: 8
   m_Name: DummyShield
-  m_TagString: Untagged
+  m_TagString: PlayerShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 1238836270}
   m_Layer: 8
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: PlayerShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1624,7 +1624,7 @@ GameObject:
   - component: {fileID: 6789319003898440954}
   m_Layer: 7
   m_Name: PlayerBody
-  m_TagString: Untagged
+  m_TagString: PlayerParts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1732,9 +1732,9 @@ GameObject:
   - component: {fileID: 3833217271781827497}
   - component: {fileID: 5673440384090078790}
   - component: {fileID: 8811077984994610361}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1921,7 +1921,7 @@ GameObject:
   - component: {fileID: 8003886150196614466}
   m_Layer: 7
   m_Name: SkateBoard
-  m_TagString: Untagged
+  m_TagString: PlayerParts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,6 +7,8 @@ TagManager:
   - IceCube
   - Ball
   - Wall
+  - PlayerShield
+  - PlayerParts
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Wall
   - Ground
   - Ball
-  - 
+  - FullPlayer
   - 
   - 
   - 

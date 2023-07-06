@@ -26,7 +26,6 @@ public class BallController : MonoBehaviour
         // If the ball is below 2.23 on the y axis then increase gravity to 1
         if (transform.localPosition.y < playerShieldHeight)
         {
-            Debug.Log("Ball position: " + transform.position.y);
             // Debug.Log("Gravity increased");
             // ballRb.gravityScale = 1f;
         }
