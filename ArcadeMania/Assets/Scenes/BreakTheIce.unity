@@ -1569,7 +1569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bf08ab281b9442d9cc5d0931f3db54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4278016430087489552, guid: 33235b82b06a04269a10e1f9b699a31f, type: 3}
+  iceBrickPrefab: {fileID: 4278016430087489552, guid: 33235b82b06a04269a10e1f9b699a31f, type: 3}
+  keyPrefab: {fileID: 6270750696022498190, guid: e8c9734f913ce4aca9048872d0989783, type: 3}
+  minKeySpawnTime: 10
+  maxKeySpawnTime: 10
   spawnPoints:
   - {fileID: 6000980171325584657}
   - {fileID: 6475161909232074293}
@@ -2102,7 +2105,7 @@ GameObject:
   - component: {fileID: 8453738678135958495}
   - component: {fileID: 2457326766246768809}
   m_Layer: 0
-  m_Name: IceSpawner
+  m_Name: IceBrickSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

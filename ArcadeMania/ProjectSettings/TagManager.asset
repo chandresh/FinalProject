@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - PlayerShield
   - PlayerParts
+  - Key
   layers:
   - Default
   - TransparentFX
