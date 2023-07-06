@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -21,7 +19,7 @@ public class Spawner : MonoBehaviour
         if (timer < Time.time)
         {
             int spawnIndex = Random.Range(0, spawnPoints.Length);
-            // Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
+            Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
             timer = Time.time + spawnDelay;
         }
 
