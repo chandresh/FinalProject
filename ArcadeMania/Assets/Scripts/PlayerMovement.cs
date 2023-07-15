@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -39,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     void JumpPlayer()
     {
-        // if player can jump in this level, then jump based when space key is pressed
-        if (canJump && Input.GetKeyDown(KeyCode.Space))
+
+        if (canJump && getInput.isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
