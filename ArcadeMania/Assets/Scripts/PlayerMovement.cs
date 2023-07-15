@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed = 10f;
+    [SerializeField] float speed = 10f;
+    [SerializeField] bool canJump = false;
+    [SerializeField] float jumpForce = 10f;
+
     private Rigidbody2D rb;
 
     private GetInput getInput;
@@ -15,7 +18,13 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // check if the rigidbody2D component is attached to the player
         rb = this.GetComponent<Rigidbody2D>();
+        if (!rb)
+        {
+            // Get it from a child object
+            rb = this.GetComponentInChildren<Rigidbody2D>();
+        }
         getInput = this.GetComponent<GetInput>();
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
@@ -24,13 +33,25 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        JumpPlayer();
         SetPlayerDirection();
+    }
+
+    void JumpPlayer()
+    {
+        // if player can jump in this level, then jump based when space key is pressed
+        if (canJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
     }
 
     private void MovePlayer()
     {
         // Y is zero as we don't have jump functionality for player in this stage
-        rb.velocity = new Vector2(getInput.directionX * speed, 0);
+        rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
+        // Y speed would be based on gravity and jump
+        rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
