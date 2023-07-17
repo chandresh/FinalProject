@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,24 +8,38 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool canJump = false;
     [SerializeField] float jumpForce = 10f;
 
+    bool isJumping = false;
+    Vector2 moveInput;
+    public float directionX, directionY;
+
     private Rigidbody2D rb;
 
-    private GetInput getInput;
+    private int enemyLayer, groundLayer;
 
-    private int enemyLayer;
+    private BoxCollider2D playerCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         // check if the rigidbody2D component is attached to the player
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         if (!rb)
         {
             // Get it from a child object
-            rb = this.GetComponentInChildren<Rigidbody2D>();
+            rb = GetComponentInChildren<Rigidbody2D>();
         }
-        getInput = this.GetComponent<GetInput>();
+
+        playerCollider = GetComponent<BoxCollider2D>();
+
+        if (!playerCollider)
+        {
+            Debug.Log("playerCollider is null");
+            playerCollider = GetComponentInChildren<BoxCollider2D>();
+        }
+
         enemyLayer = LayerMask.NameToLayer("Enemy");
+        groundLayer = LayerMask.NameToLayer("Ground");
+        Debug.Log("groundLayer: " + groundLayer);
     }
 
     // Physics code goes in FixedUpdate
@@ -35,39 +50,52 @@ public class PlayerMovement : MonoBehaviour
         SetPlayerDirection();
     }
 
+    void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+        directionX = moveInput.x;
+        directionY = moveInput.y;
+    }
+
+    void OnJump(InputValue jump)
+    {
+        if (canJump && jump.isPressed)
+        {
+            isJumping = true;
+        }
+    }
+
     void JumpPlayer()
     {
+        // Debug.Log("playerCollider.IsTouchingLayers(groundLayer): " + playerCollider.IsTouchingLayers(groundLayer));
 
-        if (canJump && getInput.isJumping)
+        if (!playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            return;
+        }
+
+        if (canJump && isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isJumping = false;
         }
     }
 
     private void MovePlayer()
     {
         // Y is zero as we don't have jump functionality for player in this stage
-        rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
+        rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
         // Y speed would be based on gravity and jump
-        rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == enemyLayer)
-        {
-            // speed = 0;
-            // rb.position = new Vector2(rb.position.x, -4f);
-        }
+        rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
     }
 
     private void SetPlayerDirection()
     {
-        if (getInput.directionX > 0)
+        if (directionX > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (getInput.directionX < 0)
+        else if (directionX < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
