@@ -5,8 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/03BreakTheIce.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/01Begining.unity
+    guid: a081cd36cb84f4feba13ff1ef3488351
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9b16e50ecccaf465b98317a6fb633012, type: 2}
