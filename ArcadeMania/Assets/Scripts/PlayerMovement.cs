@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool canJump = false;
     [SerializeField] float jumpForce = 10f;
 
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
+
     bool isJumping = false;
     Vector2 moveInput;
     public float directionX, directionY;
@@ -63,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
         }
+    }
+
+    void OnFire(InputValue value)
+    {
+        Instantiate(bullet, gun.position, transform.rotation);
     }
 
     void JumpPlayer()
