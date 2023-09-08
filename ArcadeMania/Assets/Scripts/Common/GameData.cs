@@ -35,7 +35,7 @@ public static class GameData
                 }
                 else
                 {
-                    StatusMessage = "You lost! Try Level 1 again.";
+                    StatusMessage = "You lost! Try New Delhi again.";
                 }
                 break;
             case 2:
@@ -69,20 +69,6 @@ public static class GameData
             case 4:
                 if (LoadingStatus == GameLoadingStatus.NewGame)
                 {
-                    StatusMessage = "Welcome Back! You were last in Bangalore.";
-                }
-                else if (LoadingStatus == GameLoadingStatus.Won)
-                {
-                    StatusMessage = "Great job! Next you go to Bangalore!";
-                }
-                else
-                {
-                    StatusMessage = "So close! Try Bangalore again.";
-                }
-                break;
-            case 5:
-                if (LoadingStatus == GameLoadingStatus.NewGame)
-                {
                     StatusMessage = "Welcome Back! You were last Fighting with Kalisura.";
                 }
                 else if (LoadingStatus == GameLoadingStatus.Won)
@@ -95,7 +81,7 @@ public static class GameData
                 }
                 break;
             default:
-                StatusMessage = "You're a legend!";
+                StatusMessage = "You Finished! Start over at New Delhi again? Or Choose any level.";
                 break;
         }
 
