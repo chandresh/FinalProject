@@ -7,7 +7,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float lerpSpeed = 1f;
     [SerializeField] float lerpDistance = 2.5f;
-    [SerializeField] GameObject player;
+    GameObject player;
+
     Rigidbody2D myRigidbody;
     Camera mainCamera;
 
@@ -15,18 +16,22 @@ public class EnemyMovement : MonoBehaviour
     Vector3 endPos;
     float lerpTime;
 
-
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         myRigidbody = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
-
 
         startPos = transform.position;
         endPos = new Vector3(transform.position.x, transform.position.y + lerpDistance, transform.position.z);
         lerpTime = 0;
+    }
 
-
+    void Update()
+    {
+        MoveTowardPlayer();
+        UpAndDownLerp();
     }
 
     void MoveTowardPlayer()
@@ -64,15 +69,12 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-
-
-
-    void Update()
+    void UpAndDownLerp()
     {
-        MoveTowardPlayer();
+        lerpTime += Time.deltaTime * lerpSpeed;
+        float newY = Mathf.Lerp(startPos.y, endPos.y, Mathf.PingPong(lerpTime, 1));
 
-
+        // Update only the y component of the position
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
-
-
 }
