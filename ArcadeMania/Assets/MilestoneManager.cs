@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadData : MonoBehaviour
+public class MilestoneManager : MonoBehaviour
 {
-    GameData gameData;
-
     [SerializeField] private GameObject[] milestoneObjects; // Existing milestones in the scene
     [SerializeField] private GameObject currentMilestonePrefab;
     [SerializeField] private GameObject milestonePrefab;
     [SerializeField] private GameObject oldMilestonePrefab;
 
+    private int currentLevel;
 
     void Start()
     {
-        gameData = new GameData();
-        Debug.Log("Highest Round: " + gameData.HighestRound);
-        int currentLevel = gameData.HighestRound;
+        // Load the current level from PlayerPrefs or elsewhere
+        currentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
 
         // Loop through each milestone and replace based on the current level
         for (int i = 0; i < milestoneObjects.Length; i++)
@@ -45,12 +41,5 @@ public class LoadData : MonoBehaviour
             // Instantiate the new milestone at the old position
             milestoneObjects[i] = Instantiate(milestoneToInstantiate, position, Quaternion.identity);
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
