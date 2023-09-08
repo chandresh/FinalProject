@@ -18,6 +18,9 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         bulletRB.velocity = new Vector2(speedInXDirection, 0f);
+
+        // Destroy the bullet after 2 seconds
+        Destroy(gameObject, 2f);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
