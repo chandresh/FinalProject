@@ -24,7 +24,7 @@ public static class GameData
         LoadingStatus = GameLoadingStatus.NewGame;  // Default status
     }
 
-    private static void SetStatusMessage()
+    public static void SetStatusMessage()
     {
         switch (HighestRound)
         {

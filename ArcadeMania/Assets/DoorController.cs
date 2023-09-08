@@ -15,8 +15,11 @@ public class DoorController : MonoBehaviour
 
             // Save Game Data
             GameData.UpdateHighestRound(2);
-            // TODO: Update highest score
+            GameData.LoadingStatus = GameLoadingStatus.Won;
+            GameData.SetStatusMessage();
             GameData.SaveData();
+
+            Debug.Log("First Won - " + GameData.StatusMessage + " - " + GameData.HighestRound + " - " + GameData.LoadingStatus);
 
             // Load the intro scene
             SceneManager.LoadScene(0);
