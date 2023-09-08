@@ -12,6 +12,9 @@ TagManager:
   - Key
   - Fire
   - Enemy
+  - OldMilestone
+  - Milestone
+  - CurrentMilestone
   layers:
   - Default
   - TransparentFX
