@@ -44,24 +44,35 @@ public class Player : MonoBehaviour
         }
 
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void LoadNextScene()
     {
-        if (collision.gameObject.tag == "Coin")
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Coin")
         {
             coins++;
             keyAmount.text = "Coins: " + coins;
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
+
+            if (coins == 3)
+            {
+                youWin.text = "Get the key";
+            }
         }
 
-        if (collision.gameObject.tag == "MainKey")
+        if (other.tag == "MainKey")
         {
-            youWin.text = "You got the key!!!";
+            youWin.text = "Go to Next Level";
+            Destroy(other.gameObject);
+            // Load the next scene after 2 seconds
+            Invoke("LoadNextScene", 2f);
         }
-        if (collision.gameObject.tag == "Fire")
+        if (other.tag == "Fire")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
     }
 }
