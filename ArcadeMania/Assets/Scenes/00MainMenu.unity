@@ -991,7 +991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -446, y: -139}
+  m_AnchoredPosition: {x: -449, y: -139}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083772368
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 186.66513, w: 43.24288}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2048,6 +2048,7 @@ MonoBehaviour:
   currentMilestonePrefab: {fileID: 2559749801932215594, guid: 15e49571ad34e4612ad259e1091f2fb9, type: 3}
   milestonePrefab: {fileID: 2286933217428871037, guid: 8a3fb2b7b0c3d4b43bea9176a7fb2a1d, type: 3}
   oldMilestonePrefab: {fileID: 9041009125851955359, guid: 80c35e8b56a0d4da19d71387f01ea640, type: 3}
+  introText: {fileID: 1083772368}
 --- !u!1 &1998514581
 GameObject:
   m_ObjectHideFlags: 0

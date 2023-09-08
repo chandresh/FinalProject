@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
     }
     void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // Load the intro scene
+        SceneManager.LoadScene(0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

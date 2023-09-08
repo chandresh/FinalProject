@@ -4,12 +4,7 @@ using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour
 {
 
-    GameData gameData;
 
-    void Start()
-    {
-        gameData = new GameData();
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,12 +14,12 @@ public class DoorController : MonoBehaviour
             Debug.Log("DoorController OnTriggerEnter2D Player");
 
             // Save Game Data
-            gameData.UpdateHighestRound(2);
+            GameData.UpdateHighestRound(2);
             // TODO: Update highest score
-            gameData.SaveData();
+            GameData.SaveData();
 
-            // Load the next scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            // Load the intro scene
+            SceneManager.LoadScene(0);
         }
     }
 
