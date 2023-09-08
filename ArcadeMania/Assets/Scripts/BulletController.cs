@@ -14,7 +14,6 @@ public class BulletController : MonoBehaviour
         playerMovement = FindObjectOfType<PlayerMovement>();
         speedInXDirection = playerMovement.transform.localScale.x * bulletSpeed;
     }
-
     void Update()
     {
         bulletRB.velocity = new Vector2(speedInXDirection, 0f);
