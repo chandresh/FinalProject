@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03BreakTheIce.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/04DownTheHill.unity
+    guid: f18025fff04784e0bbd00f8fa96e8ad8
+  - enabled: 1
+    path: Assets/Scenes/05KaliSura.unity
+    guid: 103f0be8367924edc96caff42644879c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9b16e50ecccaf465b98317a6fb633012, type: 2}
