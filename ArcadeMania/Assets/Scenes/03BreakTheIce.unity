@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceBrickPrefab: {fileID: 4278016430087489552, guid: 33235b82b06a04269a10e1f9b699a31f, type: 3}
   keyPrefab: {fileID: 6270750696022498190, guid: e8c9734f913ce4aca9048872d0989783, type: 3}
-  minKeySpawnTime: 10
+  minKeySpawnTime: 1
   maxKeySpawnTime: 10
   spawnPoints:
   - {fileID: 6000980171325584657}
@@ -1447,8 +1447,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5938137350455828315}
   - component: {fileID: 8266996880462802086}
-  - component: {fileID: 6893311032194812532}
   - component: {fileID: 5223077601311482226}
+  - component: {fileID: 8266996880462802087}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1849,19 +1849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBounceAngle: 75
---- !u!114 &6893311032194812532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227860237991136359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71621a947b29f4e819c7d3c4a599313f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
 --- !u!61 &7115244192523837550
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2018,6 +2005,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionX: 0
+  isJumping: 0
+--- !u!114 &8266996880462802087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227860237991136359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c09eef374ad4a62945d612c72ace6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  canJump: 0
+  jumpForce: 10
 --- !u!1 &8267556997472170009
 GameObject:
   m_ObjectHideFlags: 0
