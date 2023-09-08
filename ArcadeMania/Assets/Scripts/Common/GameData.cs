@@ -7,7 +7,7 @@ public class GameData
 
     public GameData()
     {
-        HighestRound = PlayerPrefs.GetInt("HighestRound", 0);
+        HighestRound = PlayerPrefs.GetInt("HighestRound", 1);
         HighestScore = PlayerPrefs.GetInt("HighestScore", 0);
     }
 

@@ -16,7 +16,7 @@ public class LoadData : MonoBehaviour
     {
         gameData = new GameData();
         Debug.Log("Highest Round: " + gameData.HighestRound);
-        int currentLevel = gameData.HighestRound;
+        int currentLevel = gameData.HighestRound - 1;
 
         // Loop through each milestone and replace based on the current level
         for (int i = 0; i < milestoneObjects.Length; i++)
