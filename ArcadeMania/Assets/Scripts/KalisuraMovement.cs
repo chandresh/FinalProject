@@ -128,8 +128,6 @@ public class KalisuraMovement : MonoBehaviour
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
-        Debug.Log("Distance to player: " + distanceToPlayer);
-
         if (isPlayerMoving())
         {
             Debug.Log("Player is moving");
@@ -210,5 +208,16 @@ public class KalisuraMovement : MonoBehaviour
 
         // Update only the y component of the position
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Enemy collided with " + other.gameObject.tag);
+
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "PlayerBody")
+        {
+            other.gameObject.GetComponent<HealthSystem>().TakeDamage(20);
+            Debug.Log("Player collided with enemy");
+        }
     }
 }

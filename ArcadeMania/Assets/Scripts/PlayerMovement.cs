@@ -1,11 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Scrollbar healthScrollbar;
-    [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] float speed = 10f;
     [SerializeField] bool canJump = false;
@@ -20,9 +17,40 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public int healthRegenerationRate = 0;
+
     private int enemyLayer, groundLayer;
 
     private BoxCollider2D playerCollider;
+
+    // Subscribe to events
+    private void OnEnable()
+    {
+        // Subscribe to the OnDeath event
+        GetComponent<HealthSystem>().OnDeath += OnDeath;
+    }
+
+    // Unsubscribe from events
+    private void OnDisable()
+    {
+        GetComponent<HealthSystem>().OnDeath -= OnDeath;
+    }
+
+    void OnDeath(string tag)
+    {
+
+        if (tag == "Player" || tag == "PlayerParts")
+        {
+            // Save Game Data
+            GameData.UpdateHighestRound(4);
+            GameData.LoadingStatus = GameLoadingStatus.Lost;
+            GameData.SetStatusMessage();
+            GameData.SaveData();
+            // Load the intro scene
+            SceneManager.LoadScene(0);
+
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +127,9 @@ public class PlayerMovement : MonoBehaviour
         // Y speed would be based on gravity and jump
         rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
     }
+
+
+
 
     private void SetPlayerDirection()
     {
