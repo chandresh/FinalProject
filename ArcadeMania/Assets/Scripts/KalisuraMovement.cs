@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class KalisuraMovement : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class KalisuraMovement : MonoBehaviour
     [SerializeField] float lerpSpeed = 1f;
     [SerializeField] float lerpDistance = 2.5f;
     GameObject player;
+    public Scrollbar healthScrollbar;
+    public SpriteRenderer spriteRenderer;
 
     const float RUN_DISTANCE = 10.0f;
     const float ATTACK_DISTANCE = 5.0f;
@@ -33,15 +37,19 @@ public class KalisuraMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
+        healthScrollbar.size = health / 100f;
 
         startPos = transform.position;
         endPos = new Vector3(transform.position.x, transform.position.y + lerpDistance, transform.position.z);
         lerpTime = 0;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthScrollbar.size = health / 100f;
         DamagedAnimation();
 
         if (health <= 0)
@@ -49,7 +57,17 @@ public class KalisuraMovement : MonoBehaviour
             // Add code to handle enemy death, like playing an animation
             Destroy(gameObject);
         }
+
+        StartCoroutine(FlashRed());
     }
+
+    IEnumerator FlashRed()
+    {
+        spriteRenderer.color = Color.red; // Change to red
+        yield return new WaitForSeconds(0.2f); // Duration
+        spriteRenderer.color = Color.white; // Change back to normal
+    }
+
 
     // Set all animations to false
     void ResetAnimations()
@@ -146,6 +164,7 @@ public class KalisuraMovement : MonoBehaviour
         {
             health = 100;
         }
+        healthScrollbar.size = health / 100f;
     }
 
 

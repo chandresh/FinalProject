@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Scrollbar healthScrollbar;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] float speed = 10f;
     [SerializeField] bool canJump = false;
