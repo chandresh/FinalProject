@@ -4429,7 +4429,7 @@ MonoBehaviour:
   speed: 5
   lives: 3
   coinsAmount: {fileID: 1078010079}
-  youWin: {fileID: 0}
+  livesAmount: {fileID: 1239806913}
   door: {fileID: 1787438936}
 --- !u!212 &1356539683
 SpriteRenderer:
