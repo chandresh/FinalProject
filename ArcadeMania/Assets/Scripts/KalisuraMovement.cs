@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class KalisuraMovement : MonoBehaviour
 {
@@ -10,8 +10,6 @@ public class KalisuraMovement : MonoBehaviour
     [SerializeField] float lerpSpeed = 1f;
     [SerializeField] float lerpDistance = 2.5f;
     GameObject player;
-    public Scrollbar healthScrollbar;
-    public SpriteRenderer spriteRenderer;
 
     const float RUN_DISTANCE = 10.0f;
     const float ATTACK_DISTANCE = 5.0f;
@@ -30,6 +28,36 @@ public class KalisuraMovement : MonoBehaviour
     bool playerIsMoving = false;
     public float health = 100.0f;
 
+
+    // Subscribe to events
+    private void OnEnable()
+    {
+        // Subscribe to the OnDeath event
+        GetComponent<HealthSystem>().OnDeath += OnDeath;
+    }
+
+    // Unsubscribe from events
+    private void OnDisable()
+    {
+        GetComponent<HealthSystem>().OnDeath -= OnDeath;
+    }
+
+    void OnDeath(string tag)
+    {
+
+        if (tag == "Kalisura")
+        {
+            // Save Game Data
+            GameData.UpdateHighestRound(5);
+            GameData.LoadingStatus = GameLoadingStatus.Won;
+            GameData.SetStatusMessage();
+            GameData.SaveData();
+            // Load the intro scene
+            SceneManager.LoadScene(0);
+
+        }
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -37,37 +65,12 @@ public class KalisuraMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
-        healthScrollbar.size = health / 100f;
+
 
         startPos = transform.position;
         endPos = new Vector3(transform.position.x, transform.position.y + lerpDistance, transform.position.z);
         lerpTime = 0;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        healthScrollbar.size = health / 100f;
-        DamagedAnimation();
-
-        if (health <= 0)
-        {
-            // Add code to handle enemy death, like playing an animation
-            Destroy(gameObject);
-        }
-
-        StartCoroutine(FlashRed());
-    }
-
-    IEnumerator FlashRed()
-    {
-        spriteRenderer.color = Color.red; // Change to red
-        yield return new WaitForSeconds(0.2f); // Duration
-        spriteRenderer.color = Color.white; // Change back to normal
-    }
-
 
     // Set all animations to false
     void ResetAnimations()
@@ -147,24 +150,7 @@ public class KalisuraMovement : MonoBehaviour
             RunAnimation();
         }
 
-        // Kalisura heals automatically as time goes on
-        RegenerateHealth();
     }
-
-    void RegenerateHealth()
-    {
-        if (health < 100)
-        {
-            health += 2 * Time.deltaTime;
-        }
-
-        if (health > 100)
-        {
-            health = 100;
-        }
-        healthScrollbar.size = health / 100f;
-    }
-
 
     void MoveTowardPlayer()
     {

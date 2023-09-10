@@ -32,8 +32,8 @@ public class BulletController : MonoBehaviour
 
         if (other.tag == "Kalisura")
         {
-            KalisuraMovement kalisura = other.GetComponent<KalisuraMovement>();
-            kalisura.TakeDamage(10);
+            HealthSystem kalisuraHealthSystem = other.GetComponent<HealthSystem>();
+            kalisuraHealthSystem.TakeDamage(10);
         }
         Destroy(gameObject);
     }

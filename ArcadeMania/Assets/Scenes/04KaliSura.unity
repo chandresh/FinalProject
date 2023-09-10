@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthScrollbar: {fileID: 1351683302}
+  regenerateHealth: 0
   spriteRenderer: {fileID: 641219812}
 --- !u!61 &94364898
 BoxCollider2D:
@@ -3317,6 +3318,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8304186, y: 4.2801123}
   m_EdgeRadius: 0
+--- !u!212 &386041315 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5897202814106579991, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+  m_PrefabInstance: {fileID: 6960623612097270027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &386041317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386041305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f54562bf6b4144eebefeffc4a24bd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthScrollbar: {fileID: 404389869}
+  regenerateHealth: 1
+  spriteRenderer: {fileID: 386041315}
 --- !u!114 &404389869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1792308292464927869, guid: b4bb35efe542b4ec0a6b0c2ad74f5920, type: 3}
@@ -29100,4 +29122,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6981502871893701027, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
       insertIndex: -1
       addedObject: {fileID: 386041311}
+    - targetCorrespondingSourceObject: {fileID: 6981502871893701027, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386041317}
   m_SourcePrefab: {fileID: 100100000, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
