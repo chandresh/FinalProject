@@ -92,10 +92,7 @@ public static class GameData
 
     public static void UpdateHighestRound(int newRound)
     {
-        if (newRound > HighestRound)
-        {
-            HighestRound = newRound;
-        }
+        HighestRound = newRound;
     }
 
     public static void UpdateHighestScore(int newScore)

@@ -11,7 +11,7 @@ public class DoorController : MonoBehaviour
         // Check if the player has entered the door using compareTag
         if (other.CompareTag("Player") || other.CompareTag("PlayerParts"))
         {
-            Debug.Log("DoorController OnTriggerEnter2D Player");
+
 
             // Save Game Data
             GameData.UpdateHighestRound(2);
@@ -19,7 +19,6 @@ public class DoorController : MonoBehaviour
             GameData.SetStatusMessage();
             GameData.SaveData();
 
-            Debug.Log("First Won - " + GameData.StatusMessage + " - " + GameData.HighestRound + " - " + GameData.LoadingStatus);
 
             // Load the intro scene
             SceneManager.LoadScene(0);

@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDeath(string tag)
     {
-
         if (tag == "Player" || tag == "PlayerParts")
         {
             // Save Game Data

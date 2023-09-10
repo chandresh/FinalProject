@@ -45,7 +45,7 @@ public class KalisuraMovement : MonoBehaviour
     void OnDeath(string tag)
     {
 
-        if (tag == "Kalisura")
+        if (tag == "Kalisura" || tag == "KalisuraHead")
         {
             // Save Game Data
             GameData.UpdateHighestRound(5);
@@ -89,6 +89,7 @@ public class KalisuraMovement : MonoBehaviour
 
     void WalkAnimation()
     {
+        moveSpeed = 1f;
         MoveTowardPlayer();
         UpAndDownLerp();
         ResetAnimations();
@@ -97,6 +98,7 @@ public class KalisuraMovement : MonoBehaviour
 
     void RunAnimation()
     {
+        moveSpeed = 5f;
         MoveTowardPlayer();
         UpAndDownLerp();
         ResetAnimations();
@@ -133,7 +135,6 @@ public class KalisuraMovement : MonoBehaviour
 
         if (isPlayerMoving())
         {
-            Debug.Log("Player is moving");
             playerIsMoving = true;
         }
 
