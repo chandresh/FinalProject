@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public int coins = 0;
     public float speed = 5.0f;
 
-    public Text keyAmount;
-    public Text youWin;
+    [SerializeField] int lives = 3;
+
+    [SerializeField] private TMPro.TextMeshProUGUI coinsAmount, livesAmount;
+
     public GameObject door;
     // Start is called before the first frame update
+
+    Vector3 initialPosition;
     void Start()
     {
-
+        livesAmount.text = "Lives: " + lives;
+        initialPosition = transform.position;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -44,8 +50,32 @@ public class Player : MonoBehaviour
         }
 
     }
-    void LoadNextScene()
+
+    void LoadMainMenuWithWin()
     {
+        LoadMainMenu(true);
+    }
+
+    void LoadMainMenuWithLoss()
+    {
+        LoadMainMenu(false);
+    }
+    void LoadMainMenu(bool won)
+    {
+
+        GameData.UpdateHighestRound(2);
+
+        if (won)
+        {
+            GameData.LoadingStatus = GameLoadingStatus.Won;
+        }
+        else
+        {
+            GameData.LoadingStatus = GameLoadingStatus.Lost;
+        }
+        GameData.SetStatusMessage();
+        GameData.SaveData();
+
         // Load the intro scene
         SceneManager.LoadScene(0);
     }
@@ -55,25 +85,33 @@ public class Player : MonoBehaviour
         if (other.tag == "Coin")
         {
             coins++;
-            keyAmount.text = "Coins: " + coins;
+
+            coinsAmount.text = "Coins: " + coins;
             Destroy(other.gameObject);
 
             if (coins == 3)
             {
-                youWin.text = "Get the key";
+                // youWin.text = "Get the key";
             }
         }
 
         if (other.tag == "MainKey")
         {
-            youWin.text = "Go to Next Level";
+            // youWin.text = "Go to Next Level";
             Destroy(other.gameObject);
-            // Load the next scene after 2 seconds
-            Invoke("LoadNextScene", 2f);
+            Invoke("LoadMainMenuWithWin", 2.0f);
+
         }
         if (other.tag == "Fire")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            lives--;
+            livesAmount.text = "Lives: " + lives;
+            transform.position = initialPosition;
+
+            if (lives <= 0)
+            {
+                Invoke("LoadMainMenuWithLoss", 0.2f);
+            }
         }
     }
 }
