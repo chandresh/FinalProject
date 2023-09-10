@@ -9,17 +9,28 @@ public class KalisuraMovement : MonoBehaviour
     [SerializeField] float lerpDistance = 2.5f;
     GameObject player;
 
+    const float RUN_DISTANCE = 10.0f;
+    const float ATTACK_DISTANCE = 5.0f;
+
+
+    Animator myAnimator;
+
     Rigidbody2D myRigidbody;
     Camera mainCamera;
 
     Vector3 startPos;
     Vector3 endPos;
     float lerpTime;
+    Rigidbody2D playerRigidbody;
+
+    bool playerIsMoving = false;
+    public float health = 100.0f;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
+        playerRigidbody = player.GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
 
@@ -28,11 +39,115 @@ public class KalisuraMovement : MonoBehaviour
         lerpTime = 0;
     }
 
-    void Update()
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        DamagedAnimation();
+
+        if (health <= 0)
+        {
+            // Add code to handle enemy death, like playing an animation
+            Destroy(gameObject);
+        }
+    }
+
+    // Set all animations to false
+    void ResetAnimations()
+    {
+        myAnimator.SetBool("isWalking", false);
+        myAnimator.SetBool("isRunning", false);
+        myAnimator.SetBool("isAttacking", false);
+        myAnimator.SetBool("isDamaged", false);
+        myAnimator.SetBool("isCrouching", false);
+    }
+
+    void IdleAnimation()
+    {
+        ResetAnimations();
+    }
+
+    void WalkAnimation()
     {
         MoveTowardPlayer();
         UpAndDownLerp();
+        ResetAnimations();
+        myAnimator.SetBool("isWalking", true);
     }
+
+    void RunAnimation()
+    {
+        MoveTowardPlayer();
+        UpAndDownLerp();
+        ResetAnimations();
+        myAnimator.SetBool("isRunning", true);
+    }
+
+    void AttackAnimation()
+    {
+        ResetAnimations();
+        myAnimator.SetBool("isAttacking", true);
+    }
+
+    void CrouchAnimation()
+    {
+        ResetAnimations();
+        myAnimator.SetBool("isCrouching", true);
+    }
+
+    void DamagedAnimation()
+    {
+        ResetAnimations();
+        myAnimator.SetBool("isDamaged", true);
+    }
+
+    bool isPlayerMoving()
+    {
+        return playerRigidbody.velocity != Vector2.zero;
+    }
+
+    void Update()
+    {
+
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
+        Debug.Log("Distance to player: " + distanceToPlayer);
+
+        if (isPlayerMoving())
+        {
+            Debug.Log("Player is moving");
+            playerIsMoving = true;
+        }
+
+        if (playerIsMoving && distanceToPlayer > RUN_DISTANCE)
+        {
+            WalkAnimation();
+        }
+        else if (playerIsMoving && distanceToPlayer <= ATTACK_DISTANCE)
+        {
+            AttackAnimation();
+        }
+        else if (playerIsMoving && distanceToPlayer <= RUN_DISTANCE)
+        {
+            RunAnimation();
+        }
+
+        // Kalisura heals automatically as time goes on
+        RegenerateHealth();
+    }
+
+    void RegenerateHealth()
+    {
+        if (health < 100)
+        {
+            health += 2 * Time.deltaTime;
+        }
+
+        if (health > 100)
+        {
+            health = 100;
+        }
+    }
+
 
     void MoveTowardPlayer()
     {

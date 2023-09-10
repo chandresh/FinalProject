@@ -17032,6 +17032,10 @@ PrefabInstance:
       propertyPath: lerpDistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4174865212392772777, guid: 8f2067473006a491c8d082fa63983918, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4232118924199559276, guid: 8f2067473006a491c8d082fa63983918, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -54731,6 +54735,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1102588770}
+    - target: {fileID: 4174865212392772777, guid: 8f2067473006a491c8d082fa63983918, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4232118924199559276, guid: 8f2067473006a491c8d082fa63983918, type: 3}
       propertyPath: m_Name
       value: Enemy

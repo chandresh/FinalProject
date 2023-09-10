@@ -23,9 +23,17 @@ public class BulletController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Bullet collided with " + other.tag);
+
         if (other.tag == "Enemy")
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Kalisura")
+        {
+            KalisuraMovement kalisura = other.GetComponent<KalisuraMovement>();
+            kalisura.TakeDamage(10);
         }
         Destroy(gameObject);
     }

@@ -15,6 +15,7 @@ TagManager:
   - OldMilestone
   - Milestone
   - CurrentMilestone
+  - Kalisura
   layers:
   - Default
   - TransparentFX
