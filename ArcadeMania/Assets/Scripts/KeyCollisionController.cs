@@ -8,11 +8,19 @@ public class KeyCollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the other object has a tag Player
-        if (other.CompareTag("Player"))
+
+
+        //If the ball hits the key
+        if (other.CompareTag("Ball"))
         {
+
             // Save Game Data
-            GameData.UpdateHighestRound(3);
+            GameData.UpdateHighestRound(4);
+            GameData.LoadingStatus = GameLoadingStatus.Won;
+            GameData.SetStatusMessage();
+            GameData.SaveData();
+
+
             // Load the intro scene
             SceneManager.LoadScene(0);
         }
