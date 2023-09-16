@@ -54,7 +54,7 @@ public class MoveCameraToScreen : MonoBehaviour
         {
             GameObject enemy = EnemyPool.Instance.GetEnemy();
             Vector3 spawnPos = new Vector3(
-                UnityEngine.Random.Range(cameraZones[zone].position.x - 5, cameraZones[zone].position.x + 5),
+                UnityEngine.Random.Range(cameraZones[zone].position.x - 5, cameraZones[zone].position.x + 10),
                 UnityEngine.Random.Range(cameraZones[zone].position.y - 6, cameraZones[zone].position.y - 8),
                 0
             );
