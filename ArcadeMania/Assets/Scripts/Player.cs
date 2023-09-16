@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     void LoadMainMenu(bool won)
     {
 
-        GameData.UpdateHighestRound(2);
+        GameData.UpdateHighestRound(3);
 
         if (won)
         {
@@ -91,13 +91,13 @@ public class Player : MonoBehaviour
 
             if (coins == 3)
             {
-                // youWin.text = "Get the key";
+                // All coins collected
             }
         }
 
         if (other.tag == "MainKey")
         {
-            // youWin.text = "Go to Next Level";
+
             Destroy(other.gameObject);
             Invoke("LoadMainMenuWithWin", 2.0f);
 
