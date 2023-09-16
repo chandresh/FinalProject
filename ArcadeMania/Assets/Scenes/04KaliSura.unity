@@ -3775,6 +3775,10 @@ PrefabInstance:
       propertyPath: healthScrollbar
       value: 
       objectReference: {fileID: 1351683302}
+    - target: {fileID: 2588894283512606324, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
+      propertyPath: currentLevelOfPlayer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3494535554596363930, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
       propertyPath: m_Name
       value: Player

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    [SerializeField] int currentLevelOfPlayer = 1;
 
     bool isJumping = false;
     Vector2 moveInput;
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (tag == "Player" || tag == "PlayerParts")
         {
             // Save Game Data
-            GameData.UpdateHighestRound(4);
+            GameData.UpdateHighestRound(currentLevelOfPlayer);
             GameData.LoadingStatus = GameLoadingStatus.Lost;
             GameData.SetStatusMessage();
             GameData.SaveData();

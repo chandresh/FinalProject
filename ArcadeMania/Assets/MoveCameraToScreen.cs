@@ -12,6 +12,7 @@ public class MoveCameraToScreen : MonoBehaviour
     void Start()
     {
         cameraTransform = GetComponent<Transform>();
+        SpawnEnemiesForZone(currentZone);
     }
 
     void Update()
@@ -22,11 +23,13 @@ public class MoveCameraToScreen : MonoBehaviour
         if (screenPos.x > 1 && currentZone < cameraZones.Length - 1)
         {
             currentZone++;
+            SpawnEnemiesForZone(currentZone);
         }
         // Check if the player is out of the screen on the left side
         else if (screenPos.x < 0 && currentZone > 0)
         {
             currentZone--;
+            SpawnEnemiesForZone(currentZone);
         }
 
         // Move camera to the new zone
@@ -41,5 +44,23 @@ public class MoveCameraToScreen : MonoBehaviour
             targetPosition,
             Time.deltaTime * transitionSpeed
         );
+    }
+
+    void SpawnEnemiesForZone(int zone)
+    {
+        int enemyCount = UnityEngine.Random.Range(2, 8);
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            GameObject enemy = EnemyPool.Instance.GetEnemy();
+            Vector3 spawnPos = new Vector3(
+                UnityEngine.Random.Range(cameraZones[zone].position.x - 5, cameraZones[zone].position.x + 5),
+                UnityEngine.Random.Range(cameraZones[zone].position.y - 6, cameraZones[zone].position.y - 8),
+                0
+            );
+
+            enemy.transform.position = spawnPos;
+            enemy.SetActive(true);
+        }
     }
 }

@@ -77,4 +77,29 @@ public class EnemyMovement : MonoBehaviour
         // Update only the y component of the position
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.tag == "PlayerParts")
+        {
+            HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
+            if (healthSystem == null)
+            {
+                healthSystem = other.gameObject.GetComponentInParent<HealthSystem>();
+            }
+
+            if (healthSystem != null)
+            {
+                healthSystem.TakeDamage(20);
+            }
+
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Enemy hit 2");
+    }
 }
