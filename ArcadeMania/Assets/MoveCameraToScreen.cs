@@ -71,20 +71,34 @@ public class MoveCameraToScreen : MonoBehaviour
         // Only spawn enemies if the list for this zone is empty
         if (zoneEnemies[zone].Count == 0)
         {
-            int enemyCount = UnityEngine.Random.Range(2, 8);
-
+            // Spawn "Enemy" type enemies
+            int enemyCount = UnityEngine.Random.Range(2, 5);
             for (int i = 0; i < enemyCount; i++)
             {
-                GameObject enemy = EnemyPool.Instance.GetEnemy();
+                GameObject enemy = EnemyPool.Instance.GetEnemy("Enemy");
                 Vector3 spawnPos = new Vector3(
                     UnityEngine.Random.Range(cameraZones[zone].position.x - 5, cameraZones[zone].position.x + 10),
                     UnityEngine.Random.Range(cameraZones[zone].position.y - 6, cameraZones[zone].position.y - 8),
                     0
                 );
-
                 enemy.transform.position = spawnPos;
                 enemy.SetActive(true);
                 zoneEnemies[zone].Add(enemy); // Add the enemy to the list for this zone
+            }
+
+            // Spawn "Snail" type enemies
+            int snailCount = UnityEngine.Random.Range(1, 3);
+            for (int i = 0; i < snailCount; i++)
+            {
+                GameObject snail = EnemyPool.Instance.GetEnemy("Snail");
+                Vector3 spawnPos = new Vector3(
+                    UnityEngine.Random.Range(cameraZones[zone].position.x - 5, cameraZones[zone].position.x + 10),
+                    UnityEngine.Random.Range(cameraZones[zone].position.y + 8, cameraZones[zone].position.y + 3),
+                    0
+                );
+                snail.transform.position = spawnPos;
+                snail.SetActive(true);
+                zoneEnemies[zone].Add(snail); // Add the snail to the list for this zone
             }
         }
         else
@@ -96,6 +110,7 @@ public class MoveCameraToScreen : MonoBehaviour
             }
         }
     }
+
 
     void DeactivateEnemiesForZone(int zone)
     {

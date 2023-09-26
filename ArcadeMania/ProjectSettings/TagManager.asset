@@ -18,6 +18,8 @@ TagManager:
   - Kalisura
   - KalisuraHead
   - Bullet
+  - Keys
+  - Snail
   layers:
   - Default
   - TransparentFX

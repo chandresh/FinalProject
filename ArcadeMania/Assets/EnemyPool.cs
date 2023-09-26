@@ -8,16 +8,17 @@ public class EnemyPool : MonoBehaviour
 
     // Reference to the enemy prefab
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject snailPrefab;
 
     // Pool size
     [SerializeField] int initialPoolSize = 10;
 
-    // Queue of enemies to fetch from
+    // Queues of enemies to fetch from
     private Queue<GameObject> enemyPool;
+    private Queue<GameObject> snailPool;
 
     void Awake()
     {
-        // Singleton - only one pool
         if (Instance == null)
         {
             Instance = this;
@@ -27,34 +28,48 @@ public class EnemyPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Initialize the pool
         enemyPool = new Queue<GameObject>();
+        snailPool = new Queue<GameObject>();
+
+        InitializePool(enemyPool, enemyPrefab);
+        InitializePool(snailPool, snailPrefab);
+    }
+
+    private void InitializePool(Queue<GameObject> pool, GameObject prefab)
+    {
         for (int i = 0; i < initialPoolSize; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab);
+            GameObject enemy = Instantiate(prefab);
             enemy.SetActive(false);
-            enemyPool.Enqueue(enemy);
+            pool.Enqueue(enemy);
         }
     }
+
 
     public GameObject GetEnemy()
     {
-        if (enemyPool.Count == 0)
-        {
-            // Create new enemy if pool is empty
-            GameObject enemy = Instantiate(enemyPrefab);
-
-            // Keep the enemy inactive and add to the pool
-            enemy.SetActive(false);
-            enemyPool.Enqueue(enemy);
-        }
-
-        return enemyPool.Dequeue();
+        return this.GetEnemy("Enemy");
     }
 
-    public void ReturnToPool(GameObject enemy)
+    public GameObject GetEnemy(string type)
+    {
+        Queue<GameObject> pool = (type == "Snail") ? snailPool : enemyPool;
+        GameObject prefab = (type == "Snail") ? snailPrefab : enemyPrefab;
+
+        if (pool.Count == 0)
+        {
+            GameObject enemy = Instantiate(prefab);
+            enemy.SetActive(false);
+            pool.Enqueue(enemy);
+        }
+
+        return pool.Dequeue();
+    }
+
+    public void ReturnToPool(GameObject enemy, string type)
     {
         enemy.SetActive(false);
-        enemyPool.Enqueue(enemy);
+        Queue<GameObject> pool = (type == "Snail") ? snailPool : enemyPool;
+        pool.Enqueue(enemy);
     }
 }
