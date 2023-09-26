@@ -96,8 +96,9 @@ public class SnailMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isInShell)
+        if (other.gameObject.tag == "Bullet" && isInShell)
         {
+            AudioManager.instance.PlayBulletHitSound(0.3f);
             StartCoroutine(FlashGreen());
             return;
         }
@@ -105,6 +106,7 @@ public class SnailMovement : MonoBehaviour
         // if bullet hits snail and snail is not in shell
         if (other.gameObject.tag == "Bullet" && !isInShell)
         {
+            AudioManager.instance.PlayBulletHitSound();
             isInShell = true;
             lives--;
 

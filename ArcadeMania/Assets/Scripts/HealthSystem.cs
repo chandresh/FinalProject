@@ -12,10 +12,8 @@ public class HealthSystem : MonoBehaviour
     [SerializeField]
     bool regenerateHealth = false;
     [SerializeField] SpriteRenderer spriteRenderer;
-
-    public void Start()
-    {
-    }
+    [SerializeField] AudioSource deathSound;
+    [SerializeField] float deathDelay = 1.0f;
 
     public void TakeDamage(int damage)
     {
@@ -34,6 +32,11 @@ public class HealthSystem : MonoBehaviour
     private void Update()
     {
         RegenerateHealth();
+
+        if (transform.position.y < -15)
+        {
+            Die();
+        }
     }
 
     void UpdateHealthUI()
@@ -50,6 +53,20 @@ public class HealthSystem : MonoBehaviour
 
     void Die()
     {
+        if (deathSound)
+        {
+            StartCoroutine(DieWithSound());
+        }
+        else
+        {
+            OnDeath?.Invoke(gameObject.tag);
+        }
+    }
+
+    IEnumerator DieWithSound()
+    {
+        deathSound.Play();
+        yield return new WaitForSeconds(deathDelay);
         OnDeath?.Invoke(gameObject.tag);
     }
 
