@@ -29,6 +29,18 @@ public class HealthSystem : MonoBehaviour
         StartCoroutine(FlashRed());
     }
 
+    public void Heal(int amount)
+    {
+        health += amount;
+
+        if (health > 100)
+        {
+            health = 100;
+        }
+
+        UpdateHealthUI();
+    }
+
     private void Update()
     {
         RegenerateHealth();
