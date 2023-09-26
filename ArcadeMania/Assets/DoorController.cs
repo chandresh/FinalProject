@@ -21,7 +21,8 @@ public class DoorController : MonoBehaviour
 
 
             // Load the intro scene
-            SceneManager.LoadScene(0);
+            // SceneManager.LoadScene(0);
+            SceneManager.LoadScene("GameOver");
         }
     }
 
