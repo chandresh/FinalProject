@@ -22,7 +22,7 @@ public class IceBrickCollisionManager : MonoBehaviour
         }
 
         // If the other object has a tag PlayerParts then find and destroy the Player
-        if (other.CompareTag("PlayerParts"))
+        if (other.CompareTag("PlayerParts") || other.CompareTag("Player"))
         {
             // Destroy the player
             Destroy(GameObject.Find("Player"));

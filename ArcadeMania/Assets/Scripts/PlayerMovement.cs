@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform gun;
     [SerializeField] int currentLevelOfPlayer = 1;
 
+    [SerializeField] Animator shaktiAnimator;
+
     bool isJumping = false;
     Vector2 moveInput;
     public float directionX, directionY;
@@ -75,13 +77,12 @@ public class PlayerMovement : MonoBehaviour
         groundLayer = LayerMask.NameToLayer("Ground");
         Debug.Log("groundLayer: " + groundLayer);
     }
-
-    // Physics code goes in FixedUpdate
     private void FixedUpdate()
     {
         MovePlayer();
         JumpPlayer();
         SetPlayerDirection();
+        shaktiAnimator.SetFloat("Speed", Mathf.Abs(directionX));
     }
 
     void OnMove(InputValue value)
@@ -117,19 +118,20 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isJumping = false;
+            shaktiAnimator.SetBool("Jump", true);
+        }
+        else if (playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            shaktiAnimator.SetBool("Jump", false);
         }
     }
 
     private void MovePlayer()
     {
-        // Y is zero as we don't have jump functionality for player in this stage
         rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
         // Y speed would be based on gravity and jump
         rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
     }
-
-
-
 
     private void SetPlayerDirection()
     {
