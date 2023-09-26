@@ -51079,6 +51079,7 @@ MonoBehaviour:
   bulletHitShellSound: {fileID: 8300000, guid: 88cb152bd381b480fb45e02a4d9c4b45, type: 3}
   deathSound: {fileID: 8300000, guid: e37e3e24004fc437ebbefdb45b64ec4c, type: 3}
   teleportSound: {fileID: 8300000, guid: 381e6d35622584c97890d7c7f5a6d7eb, type: 3}
+  healthSound: {fileID: 8300000, guid: baa69f1c9fc404b4a8b2e3e6a7984593, type: 3}
 --- !u!4 &924744168
 Transform:
   m_ObjectHideFlags: 0

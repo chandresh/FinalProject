@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource bgmSource; // Background Music
     public AudioSource sfxSource; // Sound Effects
 
-    public AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound;
+    public AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound, healthSound;
 
     float sfxVolume = 0.8f;
 
@@ -41,6 +41,12 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.volume = volume;
         sfxSource.clip = bulletHitSound;
+        sfxSource.Play();
+    }
+
+    public void PlayHealthPickupSound()
+    {
+        sfxSource.clip = healthSound;
         sfxSource.Play();
     }
 }

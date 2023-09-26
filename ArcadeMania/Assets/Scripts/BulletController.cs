@@ -27,11 +27,14 @@ public class BulletController : MonoBehaviour
 
         if (other.tag == "Enemy")
         {
+            AudioManager.instance.PlayBulletHitSound();
             Destroy(other.gameObject);
         }
 
-
-        Destroy(gameObject);
+        if (other.tag != "Life")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)

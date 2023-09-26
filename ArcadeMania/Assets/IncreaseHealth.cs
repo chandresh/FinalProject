@@ -10,6 +10,7 @@ public class IncreaseHealth : MonoBehaviour
 
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "PlayerParts")
         {
+            AudioManager.instance.PlayHealthPickupSound();
             HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
             if (healthSystem == null)
             {
