@@ -31,7 +31,7 @@ public class BulletController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.tag != "Life")
+        if (other.tag != "Life" && other.tag != "Coin")
         {
             Destroy(gameObject);
         }
