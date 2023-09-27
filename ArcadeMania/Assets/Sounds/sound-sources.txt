@@ -1,0 +1,5 @@
+Health: https://pixabay.com/sound-effects/health-pickup-6860/
+Bullet Hit Shell: https://pixabay.com/sound-effects/bullet-hit-metal-84818/
+Bullet Hit: https://pixabay.com/sound-effects/086553-bullet-hit-39853/
+Player Death: https://pixabay.com/sound-effects/videogame-death-sound-43894/
+Teleport: https://pixabay.com/sound-effects/warp-sfx-6897/
