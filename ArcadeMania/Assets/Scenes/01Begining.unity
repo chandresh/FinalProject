@@ -51379,7 +51379,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.657
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -51475,13 +51475,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbbf04aa848749d39bef2508b80d911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 0}
-  sfxSource: {fileID: 924744166}
+  gameSounds: {fileID: 924744166}
   bulletHitSound: {fileID: 8300000, guid: 5b7e13791fb624ee7a7a91d0d03c11c6, type: 3}
   bulletHitShellSound: {fileID: 8300000, guid: 88cb152bd381b480fb45e02a4d9c4b45, type: 3}
   deathSound: {fileID: 8300000, guid: e37e3e24004fc437ebbefdb45b64ec4c, type: 3}
   teleportSound: {fileID: 8300000, guid: 381e6d35622584c97890d7c7f5a6d7eb, type: 3}
   healthSound: {fileID: 8300000, guid: baa69f1c9fc404b4a8b2e3e6a7984593, type: 3}
+  coinSound: {fileID: 8300000, guid: 5b5d4ca22de1b4e51b4e75260b473e85, type: 3}
 --- !u!4 &924744168
 Transform:
   m_ObjectHideFlags: 0

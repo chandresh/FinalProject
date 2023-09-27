@@ -4,12 +4,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource bgmSource; // Background Music
-    public AudioSource sfxSource; // Sound Effects
+    [SerializeField] AudioSource gameSounds;
 
-    public AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound, healthSound;
-
-    float sfxVolume = 0.8f;
+    [SerializeField] AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound, healthSound, coinSound;
 
     void Awake()
     {
@@ -27,26 +24,31 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        sfxSource.clip = deathSound;
-        sfxSource.Play();
+        gameSounds.clip = deathSound;
+        gameSounds.Play();
     }
 
     public void PlayTeleportSound()
     {
-        sfxSource.clip = teleportSound;
-        sfxSource.Play();
+        gameSounds.clip = teleportSound;
+        gameSounds.Play();
     }
 
     public void PlayBulletHitSound(float volume = 0.8f)
     {
-        sfxSource.volume = volume;
-        sfxSource.clip = bulletHitSound;
-        sfxSource.Play();
+        gameSounds.volume = volume;
+        gameSounds.clip = bulletHitSound;
+        gameSounds.Play();
     }
 
     public void PlayHealthPickupSound()
     {
-        sfxSource.clip = healthSound;
-        sfxSource.Play();
+        gameSounds.clip = healthSound;
+        gameSounds.Play();
+    }
+    public void PlayCoinSound()
+    {
+        gameSounds.clip = coinSound;
+        gameSounds.Play();
     }
 }
