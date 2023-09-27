@@ -21,6 +21,7 @@ TagManager:
   - Keys
   - Snail
   - Life
+  - Coin
   layers:
   - Default
   - TransparentFX
