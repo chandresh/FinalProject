@@ -70,10 +70,12 @@ public class Player : MonoBehaviour
             // Add 3 coins won in this round to the player's money
             GameData.Money += 3;
             GameData.LoadingStatus = GameLoadingStatus.Won;
+            AudioManager.instance.PlayTeleportSound();
         }
         else
         {
             GameData.LoadingStatus = GameLoadingStatus.Lost;
+            AudioManager.instance.PlayDeathSound();
         }
         GameData.SetStatusMessage();
         GameData.SaveData();
@@ -86,15 +88,11 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
+            // Play the coin sound
+            AudioManager.instance.PlayCoinSound();
             coins++;
-
             coinsAmount.text = "Coins: " + coins;
             Destroy(other.gameObject);
-
-            if (coins == 3)
-            {
-                // All coins collected
-            }
         }
 
         if (other.tag == "MainKey")

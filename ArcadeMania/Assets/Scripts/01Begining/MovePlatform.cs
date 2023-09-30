@@ -10,6 +10,7 @@ public class MovePlatform : MonoBehaviour
 
     void Update()
     {
+        // Move the platform back and forth between pointA and pointB
         Transform target = movingToB ? pointB : pointA;
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
