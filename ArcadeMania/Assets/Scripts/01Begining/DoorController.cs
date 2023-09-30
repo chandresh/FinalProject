@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class DoorController : MonoBehaviour
 {
@@ -11,9 +12,6 @@ public class DoorController : MonoBehaviour
         // Check if the player has entered the door using compareTag
         if (other.CompareTag("Player") || other.CompareTag("PlayerParts"))
         {
-            // Play the Game Won Sound
-            AudioManager.instance.PlayRoundWonSound();
-
             // Save Game Data
             GameData.UpdateHighestRound(2);
             GameData.LoadingStatus = GameLoadingStatus.Won;
@@ -21,8 +19,16 @@ public class DoorController : MonoBehaviour
             GameData.SaveData();
 
             // Load the intro scene
-            SceneManager.LoadScene(0);
+            StartCoroutine(LoadIntroAfterSound());
         }
     }
+
+    IEnumerator LoadIntroAfterSound()
+    {
+        AudioManager.instance.PlayRoundWonSound();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(0);
+    }
+
 
 }
