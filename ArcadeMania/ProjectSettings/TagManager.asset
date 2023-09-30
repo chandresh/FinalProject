@@ -22,6 +22,8 @@ TagManager:
   - Snail
   - Life
   - Coin
+  - Walls
+  - MainKey
   layers:
   - Default
   - TransparentFX
@@ -36,7 +38,7 @@ TagManager:
   - Ground
   - Ball
   - FullPlayer
-  - 
+  - IceKey
   - 
   - 
   - 
