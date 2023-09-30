@@ -1,6 +1,19 @@
+Sounds by Pixabay
+---------------------
+Pixabay.com: License: https://pixabay.com/service/terms/
+
 Health: https://pixabay.com/sound-effects/health-pickup-6860/
 Bullet Hit Shell: https://pixabay.com/sound-effects/bullet-hit-metal-84818/
 Bullet Hit: https://pixabay.com/sound-effects/086553-bullet-hit-39853/
 Player Death: https://pixabay.com/sound-effects/videogame-death-sound-43894/
 Teleport: https://pixabay.com/sound-effects/warp-sfx-6897/
 Coin: https://pixabay.com/sound-effects/coin-upaif-14631/
+
+
+Other Music and Sounds:
+-------------------------
+Intro: MainTheme-320bit(chosic.com).mp3
+Main Theme (Overture) | The Grand Score by Alexander Nakarada | https://www.serpentsoundstudios.com
+Music promoted by https://www.chosic.com/free-music/all/
+Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/

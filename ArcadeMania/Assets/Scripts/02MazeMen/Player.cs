@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
 
         if (won)
         {
+            // Add 3 coins won in this round to the player's money
+            GameData.Money += 3;
             GameData.LoadingStatus = GameLoadingStatus.Won;
         }
         else
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour
         {
 
             Destroy(other.gameObject);
-            Invoke("LoadMainMenuWithWin", 2.0f);
+            Invoke("LoadMainMenuWithWin", 0.5f);
 
         }
         if (other.tag == "Fire")
