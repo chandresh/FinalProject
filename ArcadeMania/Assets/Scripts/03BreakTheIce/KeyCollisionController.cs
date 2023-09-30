@@ -8,7 +8,6 @@ public class KeyCollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("KeyCollisionController:OnTriggerEnter2D() " + other.tag);
         // If player collects the key - the player wins the round
         if (other.CompareTag("Player") || other.CompareTag("PlayerParts") || other.CompareTag("PlayerShield"))
         {
