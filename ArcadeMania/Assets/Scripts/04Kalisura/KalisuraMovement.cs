@@ -9,7 +9,13 @@ public class KalisuraMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float lerpSpeed = 1f;
     [SerializeField] float lerpDistance = 2.5f;
+    [SerializeField] GameObject firePrefab;
+    [SerializeField] Transform gun;
+
     GameObject player;
+
+    float nextFireTime = 0f;
+    private float fireRate = 5f;
 
     const float RUN_DISTANCE = 10.0f;
     const float ATTACK_DISTANCE = 5.0f;
@@ -139,10 +145,12 @@ public class KalisuraMovement : MonoBehaviour
         if (isPlayerMoving())
         {
             playerIsMoving = true;
+            SendFireBalls();
         }
 
         if (playerIsMoving && distanceToPlayer > RUN_DISTANCE)
         {
+            SendFireBalls();
             WalkAnimation();
         }
         else if (playerIsMoving && distanceToPlayer <= ATTACK_DISTANCE)
@@ -210,4 +218,14 @@ public class KalisuraMovement : MonoBehaviour
             Debug.Log("Player collided with enemy");
         }
     }
+
+    void SendFireBalls()
+    {
+        if (Time.time > nextFireTime)
+        {
+            GameObject fireBall = Instantiate(firePrefab, gun.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+
 }

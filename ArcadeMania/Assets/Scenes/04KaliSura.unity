@@ -191,6 +191,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6032143, y: 2.4577713}
   m_EdgeRadius: 0
+--- !u!95 &94364904
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94364891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63e85dfc7f47547c9a16cf730722b703, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &243903271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,6 +3364,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 386041315}
   deathSound: {fileID: 0}
   deathDelay: 1
+--- !u!4 &386041321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8953617254776290599, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+  m_PrefabInstance: {fileID: 6960623612097270027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &404389869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1792308292464927869, guid: b4bb35efe542b4ec0a6b0c2ad74f5920, type: 3}
@@ -3772,6 +3798,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300045651106901207, guid: 36191fa3857d39b428471cae03732f9f, type: 3}
     - target: {fileID: 2588894283512606324, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
+      propertyPath: shaktiAnimator
+      value: 
+      objectReference: {fileID: 94364904}
+    - target: {fileID: 2588894283512606324, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 641219812}
@@ -3850,12 +3880,46 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3494535554596363930, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
       insertIndex: -1
       addedObject: {fileID: 94364898}
+    - targetCorrespondingSourceObject: {fileID: 3494535554596363930, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 94364904}
   m_SourcePrefab: {fileID: 100100000, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
 --- !u!212 &641219812 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8074043979552004498, guid: 45dcd173474e745d895b17fcf9f8d289, type: 3}
   m_PrefabInstance: {fileID: 641219811}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &643030326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643030327}
+  m_Layer: 7
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &643030327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643030326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 386041321}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711567997
 GameObject:
   m_ObjectHideFlags: 0
@@ -9865,7 +9929,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ba320a7a26049cba7edafe4a7f90b1, type: 2}
+  - {fileID: 2100000, guid: 227e68f155f3d40f0b1d56d5cd1ff8f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29268,6 +29332,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 673008512508160945, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 643030327}
+    - target: {fileID: 673008512508160945, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+      propertyPath: firePrefab
+      value: 
+      objectReference: {fileID: 7073044440099625918, guid: e82e603dea9a041afade6b150cd59384, type: 3}
+    - target: {fileID: 673008512508160945, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
       propertyPath: healthScrollbar
       value: 
       objectReference: {fileID: 404389869}
@@ -29354,7 +29426,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1006207597612627232, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8953617254776290599, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 643030327}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6981502871893701027, guid: 4c7c24eb6b7e14b0e84e12a696008211, type: 3}
       insertIndex: -1
