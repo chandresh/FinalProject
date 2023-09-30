@@ -47,6 +47,9 @@ public class KalisuraMovement : MonoBehaviour
 
         if (tag == "Kalisura" || tag == "KalisuraHead")
         {
+            // Play the Game Won Sound
+            AudioManager.instance.PlayRoundWonSound();
+
             // Save Game Data
             GameData.UpdateHighestRound(5);
             GameData.LoadingStatus = GameLoadingStatus.Won;

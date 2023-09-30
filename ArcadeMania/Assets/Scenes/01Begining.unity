@@ -51486,6 +51486,7 @@ MonoBehaviour:
   teleportSound: {fileID: 8300000, guid: 381e6d35622584c97890d7c7f5a6d7eb, type: 3}
   healthSound: {fileID: 8300000, guid: baa69f1c9fc404b4a8b2e3e6a7984593, type: 3}
   coinSound: {fileID: 8300000, guid: 5b5d4ca22de1b4e51b4e75260b473e85, type: 3}
+  roundWonSound: {fileID: 8300000, guid: 4c06f1119d77942f3b1395243e3e3f8d, type: 3}
 --- !u!4 &924744168
 Transform:
   m_ObjectHideFlags: 0

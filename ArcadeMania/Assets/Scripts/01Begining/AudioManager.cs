@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource gameSounds;
 
-    [SerializeField] AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound, healthSound, coinSound;
+    [SerializeField] AudioClip bulletHitSound, bulletHitShellSound, deathSound, teleportSound, healthSound, coinSound, roundWonSound;
 
     void Awake()
     {
@@ -49,6 +49,11 @@ public class AudioManager : MonoBehaviour
     public void PlayCoinSound()
     {
         gameSounds.clip = coinSound;
+        gameSounds.Play();
+    }
+    public void PlayRoundWonSound()
+    {
+        gameSounds.clip = roundWonSound;
         gameSounds.Play();
     }
 }

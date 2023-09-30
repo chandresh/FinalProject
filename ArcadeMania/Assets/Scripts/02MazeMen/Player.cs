@@ -67,10 +67,11 @@ public class Player : MonoBehaviour
 
         if (won)
         {
+            // Play the Game Won Sound
+            AudioManager.instance.PlayRoundWonSound();
             // Add 3 coins won in this round to the player's money
             GameData.Money += 3;
             GameData.LoadingStatus = GameLoadingStatus.Won;
-            AudioManager.instance.PlayTeleportSound();
         }
         else
         {

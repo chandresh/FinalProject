@@ -11,6 +11,10 @@ public class KeyCollisionController : MonoBehaviour
         // If player collects the key - the player wins the round
         if (other.CompareTag("Player") || other.CompareTag("PlayerParts") || other.CompareTag("PlayerShield"))
         {
+
+            // Play the Game Won Sound
+            AudioManager.instance.PlayRoundWonSound();
+
             // Save Game Data
             GameData.UpdateHighestRound(4);
             GameData.LoadingStatus = GameLoadingStatus.Won;
