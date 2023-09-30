@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IceBrickCollisionManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class IceBrickCollisionManager : MonoBehaviour
         // If the other object has a tag Ball
         if (other.CompareTag("Ball"))
         {
-            Debug.Log("Ball collided with IceBrick");
+            AudioManager.instance.PlayBulletHitSound();
             // Destroy this IceBrick
             Destroy(gameObject);
         }
@@ -17,6 +18,7 @@ public class IceBrickCollisionManager : MonoBehaviour
         // If the other object has a tag PlayerShield then destroy the PlayerShield
         if (other.CompareTag("PlayerShield"))
         {
+            AudioManager.instance.PlayBulletHitSound();
             // Destroy the player
             Destroy(other.gameObject);
         }
@@ -24,8 +26,15 @@ public class IceBrickCollisionManager : MonoBehaviour
         // If the other object has a tag PlayerParts then find and destroy the Player
         if (other.CompareTag("PlayerParts") || other.CompareTag("Player"))
         {
-            // Destroy the player
-            Destroy(GameObject.Find("Player"));
+            AudioManager.instance.PlayDeathSound();
+            // Game over
+            // Load the main menu with a loss
+            GameData.UpdateHighestRound(3);
+            GameData.LoadingStatus = GameLoadingStatus.Lost;
+            GameData.SetStatusMessage();
+            GameData.SaveData();
+            // Load the intro scene
+            SceneManager.LoadScene(0);
         }
 
     }
