@@ -31,7 +31,7 @@ public class KalisuraMovement : MonoBehaviour
     float lerpTime;
     Rigidbody2D playerRigidbody;
 
-    bool playerIsMoving = false;
+    public bool playerIsMoving = false;
     public float health = 100.0f;
 
 

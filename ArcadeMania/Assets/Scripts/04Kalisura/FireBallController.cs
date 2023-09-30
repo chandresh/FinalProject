@@ -16,7 +16,7 @@ public class FireBallController : MonoBehaviour
     }
 
     private void Update() {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 4f);
     }
 
     void OnTriggerEnter2D(Collider2D other)

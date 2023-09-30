@@ -6,14 +6,19 @@ public class KalisuraHead : MonoBehaviour
 {
 
     [SerializeField] HealthSystem kalisuraHealthSystem;
+    KalisuraMovement kalisuraMovement;
+
+    private void Awake() {
+        // Find the KalisuraMovement script in the parent object
+        kalisuraMovement = GetComponentInParent<KalisuraMovement>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("KalisuraHead OnTriggerEnter2D " + other.tag);
-
         if (other.tag == "Bullet")
         {
             kalisuraHealthSystem.TakeDamage(10);
+            kalisuraMovement.playerIsMoving = true;
         }
     }
 }
