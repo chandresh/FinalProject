@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/01Begining.unity
     guid: a081cd36cb84f4feba13ff1ef3488351
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/02MazeMen.unity
     guid: 84ccdfa61595548b3bbeb1890d6576bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/03BreakTheIce.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
