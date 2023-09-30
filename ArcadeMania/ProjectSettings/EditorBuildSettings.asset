@@ -5,23 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/00MainMenu.unity
     guid: 2bc8d223bd13844b48838e461e650b56
   - enabled: 1
     path: Assets/Scenes/01Begining.unity
     guid: a081cd36cb84f4feba13ff1ef3488351
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/02MazeMen.unity
     guid: 84ccdfa61595548b3bbeb1890d6576bc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/03BreakTheIce.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/04KaliSura.unity
     guid: 103f0be8367924edc96caff42644879c
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 22600cc3c234b4ba694cd31ae0728868
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9b16e50ecccaf465b98317a6fb633012, type: 2}

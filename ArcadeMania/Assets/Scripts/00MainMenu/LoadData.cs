@@ -13,12 +13,12 @@ public class LoadData : MonoBehaviour
     [SerializeField] private GameObject milestonePrefab;
     [SerializeField] private GameObject oldMilestonePrefab;
     [SerializeField] private TMPro.TextMeshProUGUI introText;
+    [SerializeField] private TMPro.TextMeshProUGUI coinsText;
 
     void Start()
     {
-
-        Debug.Log("LoadData Start - " + GameData.StatusMessage + " - " + GameData.HighestRound + " - " + GameData.LoadingStatus);
         introText.text = GameData.StatusMessage;
+        coinsText.text = "Total coins earned today: " + GameData.Money.ToString();
 
         int currentLevel = GameData.HighestRound - 1;
 
