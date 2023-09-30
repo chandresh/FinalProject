@@ -15,7 +15,7 @@ public class KalisuraMovement : MonoBehaviour
     GameObject player;
 
     float nextFireTime = 0f;
-    private float fireRate = 5f;
+    private float fireRate = 0.5f;
 
     const float RUN_DISTANCE = 10.0f;
     const float ATTACK_DISTANCE = 5.0f;
@@ -210,12 +210,10 @@ public class KalisuraMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Enemy collided with " + other.gameObject.tag);
 
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "PlayerBody")
         {
             other.gameObject.GetComponent<HealthSystem>().TakeDamage(20);
-            Debug.Log("Player collided with enemy");
         }
     }
 
@@ -224,6 +222,11 @@ public class KalisuraMovement : MonoBehaviour
         if (Time.time > nextFireTime)
         {
             GameObject fireBall = Instantiate(firePrefab, gun.position, Quaternion.identity);
+            Vector2 direction = (player.transform.position - gun.position).normalized;
+
+            Rigidbody2D fireBallRb = fireBall.GetComponent<Rigidbody2D>();
+            fireBallRb.velocity = direction * 10f;
+
             nextFireTime = Time.time + fireRate;
         }
     }
