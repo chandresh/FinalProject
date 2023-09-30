@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class IceBrickMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
+    [SerializeField] float minSpeed = 1f, maxSpeed = 8f;
 
     void Update()
     {
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position += Vector3.down * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
     }
 }
