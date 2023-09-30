@@ -94,17 +94,23 @@ public class Player : MonoBehaviour
             coins++;
             coinsAmount.text = "Coins: " + coins;
             Destroy(other.gameObject);
+
+            if (coins == 3)
+            {
+                AudioManager.instance.PlayTeleportSound();
+            }
         }
 
         if (other.tag == "MainKey")
         {
-
+            AudioManager.instance.PlayRoundWonSound();
             Destroy(other.gameObject);
             Invoke("LoadMainMenuWithWin", 0.5f);
 
         }
         if (other.tag == "Fire")
         {
+            AudioManager.instance.PlayBulletHitSound();
             lives--;
             livesAmount.text = "Lives: " + lives;
             transform.position = initialPosition;
