@@ -107,8 +107,6 @@ public class PlayerMovement : MonoBehaviour
 
     void JumpPlayer()
     {
-        // Debug.Log("playerCollider.IsTouchingLayers(groundLayer): " + playerCollider.IsTouchingLayers(groundLayer));
-
         if (!playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
@@ -128,8 +126,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
-        // Y speed would be based on gravity and jump
         rb.velocity = new Vector2(directionX * speed, rb.velocity.y);
     }
 

@@ -4,12 +4,9 @@ using System.Collections;
 
 public class DoorController : MonoBehaviour
 {
-
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the player has entered the door using compareTag
+        // Check if the player has touched the door
         if (other.CompareTag("Player") || other.CompareTag("PlayerParts"))
         {
             // Save Game Data

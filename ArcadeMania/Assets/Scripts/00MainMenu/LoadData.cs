@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadData : MonoBehaviour
 {
-
-
     [SerializeField] private GameObject[] milestoneObjects; // Existing milestones in the scene
     [SerializeField] private GameObject currentMilestonePrefab;
     [SerializeField] private GameObject milestonePrefab;

@@ -72,6 +72,7 @@ public class EnemyMovement : MonoBehaviour
 
     void UpAndDownLerp()
     {
+        // linearly interpollate between start and end positions
         lerpTime += Time.deltaTime * lerpSpeed;
         float newY = Mathf.Lerp(startPos.y, endPos.y, Mathf.PingPong(lerpTime, 1));
 

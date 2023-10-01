@@ -23,33 +23,31 @@ public class Player : MonoBehaviour
         livesAmount.text = "Lives: " + lives;
         initialPosition = transform.position;
     }
-
-
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(0, speed * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(0, -speed * Time.deltaTime, 0);
-        }
+        HandleMovement();
+        CheckCoinCount();
+    }
+    void HandleMovement()
+    {
+        float moveX = 0;
+        float moveY = 0;
+        if (Input.GetKey(KeyCode.LeftArrow)) moveX = -speed;
+        if (Input.GetKey(KeyCode.RightArrow)) moveX = speed;
+        if (Input.GetKey(KeyCode.UpArrow)) moveY = speed;
+        if (Input.GetKey(KeyCode.DownArrow)) moveY = -speed;
 
+        transform.Translate(moveX * Time.deltaTime, moveY * Time.deltaTime, 0);
+    }
+
+    void CheckCoinCount()
+    {
         if (coins == 3)
         {
             Destroy(door);
         }
-
     }
+
 
     void LoadMainMenuWithWin()
     {
