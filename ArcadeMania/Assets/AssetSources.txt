@@ -1,0 +1,17 @@
+Assets Sources:
+
+Fireball: https://www.freepik.com/premium-vector/asteroid-flame-colored-space-objects-fireball-meteor-cartoon-collection-set_12277680.htm#&position=0&from_view=collections
+Snail: https://www.freepik.com/free-vector/many-snails-crawling-garden_4869996.htm#&position=1&from_view=collections
+Ghosts: https://www.freepik.com/free-vector/hand-drawn-halloween-ghosts-collection_18778247.htm#&position=4&from_view=collections
+Fire: https://www.freepik.com/premium-vector/cartoon-fire-flame-sheet-sprite-animation-set_5497878.htm#&position=7&from_view=collections
+Tajmahal: https://www.freepik.com/free-vector/v242-niwat-eye-00012-l_3842058.htm#&position=6&from_view=collections
+Ice Cubes: https://www.freepik.com/free-vector/flat-snow-cap-collection_3507261.htm#&position=13&from_view=collections
+City Background: https://www.freepik.com/premium-vector/ghetto-landscape-poor-neighborhood-cityscape-with-slum-city-street-dirty-shanty-houses_11814102.htm#&position=10&from_view=collections
+Sheild: https://www.freepik.com/premium-vector/set-vector-blue-glass-transparency-effect-window-mirror-reflection-glare-png-glass-png-window-glass-frame-glass-surface_16250238.htm#&position=14&from_view=collections
+Fire Football: https://www.freepik.com/premium-vector/flaming-soccer-ball-illustration_9688510.htm#&position=15&from_view=collections
+Shakti, Life and Key: https://img.freepik.com/free-vector/girl-game-illustration-elements_1308-27203.jpg?size=626&ext=jpg&uid=P78814434&ga=GA1.2.2071648964.1688032452
+Ruppee Coin: https://www.freepik.com/premium-vector/3d-vector-illustration-gold-rupee-coin-indian-currency-symbol_22244504.htm
+BreakTheIce Scene: https://www.freepik.com/free-vector/cartoon-game-design-web-page-template-with-fantasy-magic-forest-landscape-crystals-minerals-circle-heart-star-buttons_9434969.htm
+Map: https://www.freepik.com/premium-vector/fish-world-example-screen-levels-game-interface-with-progress-bar-objects-buttons_11966465.htm
+Kalisura: https://assetstore.unity.com/packages/2d/characters/2d-animated-character-troll-boss-enemy-236127
+Begining Tile Set: https://assetstore.unity.com/packages/2d/textures-materials/city-street-tileset-pack-181816

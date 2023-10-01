@@ -26,8 +26,6 @@ public class IcePlayerMovement : MonoBehaviour
         getInput = this.GetComponent<GetInput>();
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
-
-    // Physics code goes in FixedUpdate
     private void FixedUpdate()
     {
         MovePlayer();
@@ -46,21 +44,8 @@ public class IcePlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        // Y is zero as we don't have jump functionality for player in this stage
-        rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
-        // Y speed would be based on gravity and jump
         rb.velocity = new Vector2(getInput.directionX * speed, rb.velocity.y);
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == enemyLayer)
-        {
-            // speed = 0;
-            // rb.position = new Vector2(rb.position.x, -4f);
-        }
-    }
-
     private void SetPlayerDirection()
     {
         if (getInput.directionX > 0)

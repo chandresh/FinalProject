@@ -10,11 +10,6 @@ public class FireBallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        // rb.velocity = new Vector2(-50f, 0);
-    }
-
     private void Update() {
         Destroy(gameObject, 4f);
     }
